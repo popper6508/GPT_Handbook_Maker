@@ -65,9 +65,9 @@ def generate_prompt(questions):
 def generate_final_answers(prompts):
     final_answers = []
     for prompt in prompts:
-            system_message_02 = """1. I will copy your answer directly to the research report,\n
-                                      so don't add any reply such as 'sure. give me prompt' or 'sure. Here is answer'\n
-                                   2. Translating in Korean"""
+            system_message_02 = """I will copy your answer directly to the research report,\n
+                                   so don't add any reply such as 'sure. give me prompt' or 'sure. Here is answer'\n
+                                   """
             response = openai.ChatCompletion.create(
                 model="gpt-3.5-turbo",
                 messages=[
@@ -80,6 +80,24 @@ def generate_final_answers(prompts):
             final_answers.append(final_answer)
     return final_answers
 
+def translator(contents) : 
+    answers = []
+    for content in contents:
+            system_message_02 = """1. I will copy your answer directly to the research report,\n
+                                      so don't add any reply such as 'sure. give me prompt' or 'sure. Here is answer'\n
+                                   2. Just Translate it in Korean
+                                   """
+            response = openai.ChatCompletion.create(
+                model="gpt-3.5-turbo",
+                messages=[
+                    {"role": "system", "content": system_message_02},
+                    {"role": "user", "content": content},
+                ],
+                max_tokens=1000
+            )
+            result_trans = response['choices'][0]['message']['content'].strip()
+            answers.append(result_trans)
+    return answers
 
 
 ##통합
@@ -92,7 +110,9 @@ def gpt_for_vc(Industry, country, num_questions) :
 
     prompts = generate_prompt(questions)
 
-    final_answers = generate_final_answers(prompts)
+    final_answers = translator(generate_final_answers(prompts))
+
+    questions = translator(questions)
 
     return questions, final_answers
 
