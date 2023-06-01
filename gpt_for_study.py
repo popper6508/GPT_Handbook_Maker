@@ -74,11 +74,12 @@ def generate_outline(chapters, towho):
 def generate_handbook(outlines):
     books = []
     for i in range(len(outlines)):
-            system_message_02 = """I'll give you an outlne then you have to fill it.
-                                   you must write full chapter! not just fill in outline.
-                                   Don't reply anything except the result of filling
-                                   NOTE: Don't attach any additional replys such as "for who... understanding....", except outline. I will directly use it as outline to other chat!\n 
-                                         Please follow what I said strictly. please.....
+            system_message_02 = """1. I'll give you an outlne then you have to fill it.
+                                      you must write full chapter! not just fill in outline.
+                                   2. Don't reply anything except the result of filling
+                                      NOTE: Don't attach any additional replys such as "for who... understanding....", except outline. I will directly use it as outline to other chat!\n 
+                                   3. Unless these are neccesary, it's better not to attach 'Report', 'Introduction', 'Conclusion' 
+                                   Please follow what I said strictly. please.....
                                     """
             response = openai.ChatCompletion.create(
                 model="gpt-3.5-turbo",
@@ -136,8 +137,8 @@ class ValueChainPDFApp(QWidget):
     def generate_pdf(self):
         openai.api_key = self.key.text()
         Topic = self.input_Topic.text()
-        Num_of_Chapter = self.input_Num_of_Chapter.text()
-        Make_for_Who = int(self.input_Make_for_Who.text())
+        Num_of_Chapter = int(self.input_Num_of_Chapter.text())
+        Make_for_Who = self.input_Make_for_Who.text()
 
         final_answers = gpt_for_book(Topic, Num_of_Chapter, Make_for_Who)
 

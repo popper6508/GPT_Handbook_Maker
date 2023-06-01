@@ -64,8 +64,10 @@ def generate_prompt(questions):
 def generate_final_answers(prompts):
     final_answers = []
     for prompt in prompts:
-            system_message_02 = """I will copy your answer directly to the research report,\n
-                                   so don't add any reply such as 'sure. give me prompt' or 'sure. Here is answer'"""
+            system_message_02 = """1. I will copy your answer directly to the research report,\n
+                                      so don't add any reply such as 'sure. give me prompt' or 'sure. Here is answer'
+                                   2. It's better not to attach 'Report', 'Introduction', 'Conclusion', unless these are neccesary
+                                   """
             response = openai.ChatCompletion.create(
                 model="gpt-3.5-turbo",
                 messages=[
