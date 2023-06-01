@@ -74,10 +74,10 @@ def generate_outline(chapters, towho):
 def generate_handbook(outlines):
     books = []
     for i in range(len(outlines)):
-            system_message_02 = """1. I'll give you an outlne then you have to fill it.
-                                      you must write full chapter! not just fill in outline.
+            system_message_02 = """1. I'll give you an outlne,
+                                      then, you must write full chapter, which means writing book! not just fill in outline.
                                    2. Don't reply anything except the result of filling
-                                      NOTE: Don't attach any additional replys such as "for who... understanding....", except outline. I will directly use it as outline to other chat!\n 
+                                      NOTE: Don't attach any additional replys such as "for who... understanding...." or "Here's writing". I will directly use it!\n 
                                    3. Unless these are neccesary, it's better not to attach 'Report', 'Introduction', 'Conclusion' 
                                    Please follow what I said strictly. please.....
                                     """
