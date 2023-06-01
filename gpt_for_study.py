@@ -78,7 +78,7 @@ def generate_handbook(outlines):
                                       then, you must write full chapter, which means writing book! not just fill in outline.
                                    2. Don't reply anything except the result of filling
                                       NOTE: Don't attach any additional replys such as "for who... understanding...." or "Here's writing". I will directly use it!\n 
-                                   3. Unless these are neccesary, it's better not to attach 'Report', 'Introduction', 'Conclusion' 
+                                   3. It's better not to attach 'Report', 'Chapter', 'Introduction', 'Conclusion' 
                                    Please follow what I said strictly. please.....
                                     """
             response = openai.ChatCompletion.create(
