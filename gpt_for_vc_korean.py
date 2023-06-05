@@ -183,7 +183,7 @@ class ValueChainPDFApp(QWidget):
             pdf.multi_cell(0, 10, final_answers[1][i] + "\n\n")
 
         filename = f"{Industry} {country} {now}.pdf"
-        pdf.output(filename)
+        pdf.output("./Generated_files/"+filename)
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
