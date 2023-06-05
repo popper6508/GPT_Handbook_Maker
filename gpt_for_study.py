@@ -99,9 +99,9 @@ def gpt_for_book(topic, num, forwho) :
     outlines = generate_outline(chapters, forwho)
     books = generate_handbook(outlines)
     return chapters, books
-     
 
-class ValueChainPDFApp(QWidget):
+
+class StudyPDFApp(QWidget):
     def __init__(self):
         super().__init__()
         self.setWindowTitle("Book Generator")
@@ -163,11 +163,11 @@ class ValueChainPDFApp(QWidget):
             pdf.multi_cell(0, 10, final_answers[1][i] + "\n\n")
 
         filename = f"{Topic} text book for {Make_for_Who}.pdf"
-        pdf.output(filename)
+        pdf.output("./Generated_files/"+filename)
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
-    window = ValueChainPDFApp()
+    window = StudyPDFApp()
     window.show()
     sys.exit(app.exec_())
 
